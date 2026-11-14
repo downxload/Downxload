@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>downXload - Apps & Games</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #101522;
+  color: white;
+}
+
+header {
+  background: #19243a;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #36d6ff;
+}
+
+.logo span {
+  color: white;
+}
+
+header p {
+  margin-top: 8px;
+  color: #b9c5d9;
+}
+
+.search {
+  width: 90%;
+  max-width: 500px;
+  display: block;
+  margin: 20px auto;
+  padding: 14px;
+  border: 1px solid #36d6ff;
+  border-radius: 10px;
+  background: #202c42;
+  color: white;
+  font-size: 16px;
+}
+
+nav {
+  text-align: center;
+  margin: 20px;
+}
+
+nav button {
+  padding: 11px 22px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  background: #263750;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background: #078dcc;
+}
+
+h2 {
+  margin: 20px;
+  color: #36d6ff;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.card {
+  background: #1c2940;
+  border-radius: 12px;
+  padding: 18px 10px;
+  text-align: center;
+}
+
+.app-icon {
+  font-size: 45px;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+.card a {
+  display: inline-block;
+  text-decoration: none;
+  background: #08a8e0;
+  color: white;
+  padding: 9px 15px;
+  border-radius: 7px;
+  font-size: 13px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #19243a;
+  color: #b9c5d9;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">down<span>X</span>load</div>
+  <p>Your Favorite Apps & Games</p>
+</header>
+
+<input
+  type="text"
+  id="search"
+  class="search"
+  placeholder="Search Apps & Games..."
+  oninput="searchItems()"
+>
+
+<nav>
+  <button onclick="filterItems('all')">All</button>
+  <button onclick="filterItems('app')">Apps</button>
+  <button onclick="filterItems('game')">Games</button>
+</nav>
+
+<h2>🔥 Popular Downloads</h2>
+
+<div class="container" id="products">
+
+  <div class="card" data-type="app">
+    <div class="app-icon">📱</div>
+    <h3>WhatsApp</h3>
+    <a href="https://play.google.com/store/apps/details?id=com.whatsapp"
+       target="_blank">Download</a>
+  </div>
+
+  <div class="card" data-type="app">
+    <div class="app-icon">▶️</div>
+    <h3>YouTube</h3>
+    <a href="https://play.google.com/store/apps/details?id=com.google.android.youtube"
+       target="_blank">Download</a>
+  </div>
+
+  <div class="card" data-type="game">
+    <div class="app-icon">🎮</div>
+    <h3>Subway Surfers</h3>
+    <a href="https://play.google.com/store/apps/details?id=com.kiloo.subwaysurf"
+       target="_blank">Download</a>
+  </div>
+
+  <div class="card" data-type="game">
+    <div class="app-icon">🏎️</div>
+    <h3>Asphalt 8</h3>
+    <a href="https://play.google.com/store/apps/details?id=com.gameloft.android.ANMP.GloftA8HM"
+       target="_blank">Download</a>
+  </div>
+
+</div>
+
+<footer>
+  <h3>downXload</h3>
+  <p>Apps & Games Download Website</p>
+  <p>© 2026 downXload</p>
+</footer>
+
+<script>
+function filterItems(type) {
+  let cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    card.style.display =
+      type === "all" || card.dataset.type === type
+      ? "block" : "none";
+  });
+}
+
+function searchItems() {
+  let value = document.getElementById("search")
+    .value.toLowerCase();
+
+  document.querySelectorAll(".card").forEach(card => {
+    let name = card.querySelector("h3")
+      .innerText.toLowerCase();
+
+    card.style.display =
+      name.includes(value) ? "block" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
